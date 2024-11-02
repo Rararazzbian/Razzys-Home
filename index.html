@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.ico">
+    <title>Razzy's Home</title>
+    <style>
+        @font-face {
+            font-family: 'AlexandriaBlack';
+            src: url('fonts/alexandria-black.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'FuturaMedium';
+            src: url('fonts/futura_medium.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Outfit';
+            src: url('fonts/outfit.ttf') format('truetype');
+        }
+        body {
+            background-color: rgb(230, 230, 230);
+            margin: 0;
+            height: 100vh;
+        }
+        .content {
+            filter: blur(30px); /* Initial blur */
+            transition: filter 0.3s;
+        }
+        h1 {
+            font-family: 'AlexandriaBlack';
+            color: white;
+            background-color: black;
+            width: 800px;
+            padding: 20px;
+            text-align: center;
+            margin: 40px auto 0 auto;
+            position: relative;
+            box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3); /* Solid drop shadow */
+        }
+        h1 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        h1 .gif {
+        position: absolute;
+        left: -106px; /* Adjust as needed to snap to the left edge */
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+        width: 200px; /* Adjust the width as needed */
+        height: auto;
+        }
+        h2 {
+            font-family: 'AlexandriaBlack';
+            color: white;
+            background-color: black;
+            width: 800px;
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3); /* Solid drop shadow */
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            font-family: 'AlexandriaBlack';
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .modal button {
+            font-family: 'Outfit';
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="modal" id="ageModal">
+        <div class="modal-content">
+            <p>This page contains silly materials. Are you okay with that?</p>
+            <button id="yesButton">Yea lemme in!!!</button>
+            <button id="noButton">Nuh-uhhh</button>
+        </div>
+    </div>
+    <div class="content" id="mainContent">
+        <h1>
+            <img src="assets/banner.png" alt="Banner">
+            erm...
+        </h1>
+        <div class="separator" style="text-align: center; margin: 20px 0;">
+            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+            <img src="assets/heart.png" style="width: 20px; height: 20px; display: inline-block;" />
+            </a>
+        </div>
+        <h2>
+            <img src="assets/razz_logo.png" alt="Logo">
+            squilliam fancyson???
+
+
+        <div class="watermark">
+            <img src="assets/razz_logo.png" alt="Watermark">
+        </div>
+        <style>
+            .watermark {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.3;
+            transition: opacity 0.3s;
+            }
+            .watermark img {
+            width: 200px;
+            height: auto;
+            }
+            .watermark:hover {
+            opacity: 0.7;
+            }
+        </style>
+
+    </div>
+    <script>
+        const bannerBox = document.querySelector('h1');
+        const gif = document.createElement('img');
+        gif.src = 'assets/razz_teehee.gif';
+        gif.classList.add('gif');
+        bannerBox.appendChild(gif);
+
+        let isPlaying = false;
+
+        bannerBox.addEventListener('mouseover', (event) => {
+            if (!isPlaying && event.clientX <= bannerBox.getBoundingClientRect().left + 10) { // Adjust the hover area as needed
+                isPlaying = true;
+                gif.style.display = 'block';
+                gif.style.animation = 'none';
+                setTimeout(() => {
+                    gif.style.animation = '';
+                }, 0);
+
+                gif.addEventListener('animationend', () => {
+                    gif.style.display = 'none';
+                    isPlaying = false;
+                }, { once: true });
+            }
+        });
+
+
+        const watermark = document.querySelector('.content div');
+        watermark.addEventListener('mouseover', () => {
+            watermark.style.opacity = '0.7';
+        });
+        watermark.addEventListener('mouseout', () => {
+            watermark.style.opacity = '0.3';
+        });
+
+        const ageModal = document.getElementById('ageModal');
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const mainContent = document.getElementById('mainContent');
+
+        yesButton.addEventListener('click', () => {
+            mainContent.style.filter = 'none';
+            ageModal.style.display = 'none';
+        });
+
+        noButton.addEventListener('click', () => {
+            window.location.href = 'https://youtu.be/-kmP-EufWYA';
+        });
+    </script>
+</body>
+</html>
