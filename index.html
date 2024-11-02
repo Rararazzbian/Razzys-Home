@@ -111,11 +111,13 @@
             </a>
         </div>
         <h2>
-            <img src="assets/razz_logo.png" alt="Logo">
-            squilliam fancyson???
-
-
-        <div class="watermark">
+            <img src="assets/razz_logo.png" alt="Logo" style="display: block; margin: 0 auto;">
+            <span style="display: block; font-size: 32px; text-align: center; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">squilliam fancyson???</span>
+        <p style="font-family: 'Outfit'; font-size: 24px; position: absolute; top: 60px; color: white; background-color: black; padding: 10px; margin: 0 auto; width: 800px; text-align: center;">
+            This page is still in the works, come back later uwu
+        </p>
+        </h2>
+        <div class="watermark" style="pointer-events: none;">
             <img src="assets/razz_logo.png" alt="Watermark">
         </div>
         <style>
@@ -179,6 +181,7 @@
         yesButton.addEventListener('click', () => {
             mainContent.style.filter = 'none';
             ageModal.style.display = 'none';
+            document.cookie = "ageVerified=true";
         });
 
         noButton.addEventListener('click', () => {
