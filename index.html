@@ -7,186 +7,84 @@
     <title>Razzy's Home</title>
     <style>
         @font-face {
-            font-family: 'AlexandriaBlack';
-            src: url('fonts/alexandria-black.ttf') format('truetype');
+        font-family: 'AlexandriaBlack';
+        src: url('fonts/alexandria-black.woff2') format('woff2'), url('fonts/alexandria-black.ttf') format('truetype'); /* WOFF2 + TTF */
+        font-display: swap;
         }
         @font-face {
-            font-family: 'FuturaMedium';
-            src: url('fonts/futura_medium.ttf') format('truetype');
+        font-family: 'FuturaMedium';
+        src: url('fonts/futura_medium.woff2') format('woff2'), url('fonts/futura_medium.ttf') format('truetype'); /* WOFF2 + TTF */
+        font-display: swap;
         }
         @font-face {
-            font-family: 'Outfit';
-            src: url('fonts/outfit.ttf') format('truetype');
+        font-family: 'Outfit';
+        src: url('fonts/outfit.woff2') format('woff2'), url('fonts/outfit.ttf') format('truetype');  /* WOFF2 + TTF */
+        font-display: swap;
         }
-        body {
-            background-color: rgb(230, 230, 230);
-            margin: 0;
-            height: 100vh;
+        body { background: rgb(230,230,230); margin:0; height:100vh; } /* Minified */
+        .content { filter: blur(30px); transition: filter .3s; } /* Minified */
+        h1, h2 { /* Combined selector */
+        font-family: 'AlexandriaBlack'; color:#fff; background:#000; width:800px; padding:20px;
+        text-align:center; margin:40px auto 0 auto; position:relative; box-shadow: 7px 7px 0 rgba(0,0,0,.3);
         }
-        .content {
-            filter: blur(30px); /* Initial blur */
-            transition: filter 0.3s;
+        h1 { margin-bottom: 0 } /* Remove default margin */
+        h1 img, h2 img { /* Combined selector */
+            width:100%; height:auto; display:block; margin-bottom:10px;
         }
-        h1 {
-            font-family: 'AlexandriaBlack';
-            color: white;
-            background-color: black;
-            width: 800px;
-            padding: 20px;
-            text-align: center;
-            margin: 40px auto 0 auto;
-            position: relative;
-            box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3); /* Solid drop shadow */
+        h1 .gif { position:absolute; left:-106px; top:50%; transform: translateY(-50%); display:none; width:200px; height:auto;}
+        h2 .info { /* Moved inline styles to CSS */
+            font-family: 'Outfit'; font-size: 24px; position: absolute; top: 60px; color: #fff; background:#000; padding: 10px;
+            margin: 0 auto; width: 800px; text-align: center;
         }
-        h1 img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 10px;
+
+        h2 span { /* Moved inline style to CSS */
+        display:block; font-size:32px; text-align:center; position:absolute; top:20px; left:50%; transform:translateX(-50%);
         }
-        h1 .gif {
-        position: absolute;
-        left: -106px; /* Adjust as needed to snap to the left edge */
-        top: 50%;
-        transform: translateY(-50%);
-        display: none;
-        width: 200px; /* Adjust the width as needed */
-        height: auto;
-        }
-        h2 {
-            font-family: 'AlexandriaBlack';
-            color: white;
-            background-color: black;
-            width: 800px;
-            padding: 20px;
-            text-align: center;
-            margin: 0 auto;
-            position: relative;
-            box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.3); /* Solid drop shadow */
-        }
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            font-family: 'AlexandriaBlack';
-            background: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .modal button {
-            font-family: 'Outfit';
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        
+
+
+        .modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.8); display:flex; justify-content:center; align-items:center; z-index:1000;}
+        .modal-content { font-family: 'AlexandriaBlack'; background:#fff; padding:20px; text-align:center; border-radius:10px;}
+        .modal button { font-family: 'Outfit'; margin:10px; padding:10px 20px; font-size:16px;}
+        .watermark { position:fixed; bottom:10px; left:50%; transform: translateX(-50%); opacity:.3; transition: opacity .3s;} /* Minified */
+        .watermark:hover { opacity:.7;}
+        .watermark img { width:200px; height:auto;}
     </style>
 </head>
 <body>
-    <div class="modal" id="ageModal">
-        <div class="modal-content">
-            <p>This page contains mature material. Are you 18+?</p>
-            <button id="yesButton">Yea lemme in!!!</button>
-            <button id="noButton">Nuh-uhhh</button>
-        </div>
+    <div id="ageModal" class="modal">
+    <div class="modal-content">
+        <p>This page contains mature material. Are you 18+?</p>
+        <button id="yesButton">Yea lemme in!!!</button>
+        <button id="noButton">Nuh-uhhh</button>
     </div>
-    <div class="content" id="mainContent">
-        <h1>
-            <img src="assets/banner.png" alt="Banner">
-            erm...
-        </h1>
-        <div class="separator" style="text-align: center; margin: 20px 0;">
-            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
-            <img src="assets/heart.png" style="width: 20px; height: 20px; display: inline-block;" />
-            </a>
-        </div>
+    </div>
+
+    <div id="mainContent" class="content">
+        <h1><img src="assets/banner.png" alt="Banner">erm...</h1>
         <h2>
-            <img src="assets/razz_logo.png" alt="Logo" style="display: block; margin: 0 auto;">
-            <span style="display: block; font-size: 32px; text-align: center; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">squilliam fancyson???</span>
-        <p style="font-family: 'Outfit'; font-size: 24px; position: absolute; top: 60px; color: white; background-color: black; padding: 10px; margin: 0 auto; width: 800px; text-align: center;">
-            This page is still in the works, come back later uwu
-        </p>
+            <img src="assets/razz_logo.png" alt="Logo">
+            <span>squilliam fancyson???</span>
+            <p class="info">This page is still in the works, come back later uwu</p>
         </h2>
-        <div class="watermark" style="pointer-events: none;">
-            <img src="assets/razz_logo.png" alt="Watermark">
-        </div>
-        <style>
-            .watermark {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.3;
-            transition: opacity 0.3s;
-            }
-            .watermark img {
-            width: 200px;
-            height: auto;
-            }
-            .watermark:hover {
-            opacity: 0.7;
-            }
-        </style>
-
+        <div class="watermark"><img src="assets/razz_logo.png" alt="Watermark"></div>
     </div>
+
+
     <script>
-        const bannerBox = document.querySelector('h1');
-        const gif = document.createElement('img');
-        gif.src = 'assets/razz_teehee.gif';
-        gif.classList.add('gif');
-        bannerBox.appendChild(gif);
-
-        let isPlaying = false;
-
-        bannerBox.addEventListener('mouseover', (event) => {
-            if (!isPlaying && event.clientX <= bannerBox.getBoundingClientRect().left + 10) { // Adjust the hover area as needed
-                isPlaying = true;
-                gif.style.display = 'block';
-                gif.style.animation = 'none';
-                setTimeout(() => {
-                    gif.style.animation = '';
-                }, 0);
-
-                gif.addEventListener('animationend', () => {
-                    gif.style.display = 'none';
-                    isPlaying = false;
-                }, { once: true });
-            }
+        const bannerBox=document.querySelector('h1'),gif=document.createElement('img');
+        gif.src='assets/razz_teehee.gif',gif.classList.add('gif'),bannerBox.appendChild(gif);
+        let isPlaying=false;
+        bannerBox.addEventListener('mouseover',e=>{
+        if(!isPlaying&&e.clientX<=bannerBox.getBoundingClientRect().left+10){
+            isPlaying=true;
+            gif.style.display='block',gif.style.animation='none';
+            setTimeout(()=>{gif.style.animation='';},0);
+            gif.addEventListener('animationend',()=>{gif.style.display='none',isPlaying=false;},{once:true});
+        }
         });
-
-
-        const watermark = document.querySelector('.content div');
-        watermark.addEventListener('mouseover', () => {
-            watermark.style.opacity = '0.7';
-        });
-        watermark.addEventListener('mouseout', () => {
-            watermark.style.opacity = '0.3';
-        });
-
-        const ageModal = document.getElementById('ageModal');
-        const yesButton = document.getElementById('yesButton');
-        const noButton = document.getElementById('noButton');
-        const mainContent = document.getElementById('mainContent');
-
-        yesButton.addEventListener('click', () => {
-            mainContent.style.filter = 'none';
-            ageModal.style.display = 'none';
-            document.cookie = "ageVerified=true";
-        });
-
-        noButton.addEventListener('click', () => {
-            window.location.href = 'https://youtu.be/-kmP-EufWYA';
-        });
+        const ageModal=document.getElementById('ageModal'),yesButton=document.getElementById('yesButton'),noButton=document.getElementById('noButton'),mainContent=document.getElementById('mainContent');
+        yesButton.addEventListener('click',()=>{mainContent.style.filter='none',ageModal.style.display='none';});
+        noButton.addEventListener('click',()=>{window.location.href='https://youtu.be/-kmP-EufWYA';});
     </script>
 </body>
 </html>
