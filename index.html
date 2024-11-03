@@ -34,6 +34,8 @@
             margin: 0 auto; width: 800px; text-align: center;
         }
 
+
+
         h2 span { /* Moved inline style to CSS */
         display:block; font-size:32px; text-align:center; position:absolute; top:20px; left:50%; transform:translateX(-50%);
         }
@@ -48,6 +50,7 @@
     </style>
 </head>
 <body>
+    <div style="background: url('assets/images/bg.png') repeat; background-size: 400px auto; height: 100%; width: 100%; position: absolute; z-index: -1; opacity: 0.2;"></div>
     <div id="ageModal" class="modal">
     <div class="modal-content">
         <p>This page contains mature material. Are you 18+?</p>
@@ -57,18 +60,28 @@
     </div>
 
     <div id="mainContent" class="content">
-        <h1><img src="assets/banner.png" alt="Banner">erm...</h1>
+        <h1><img src="assets/images/banner.png" alt="Banner">erm...</h1>
         <div style="text-align: center; margin: 20px 0;">
             <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
-            <img src="assets/heart.png" alt="Separator" style="width: 40px; height: 40px;">
+            <img src="assets/images/heart.png" alt="Separator" style="width: 40px; height: 40px;">
             </a>
         </div>
-        <h2 style="margin-top: -10px;">
-            <img src="assets/razz_logo.png" alt="Logo">
+        <h2 style="margin-top: -10px; min-height: 100px;">
             <span>squilliam fancyson???</span>
             <p class="info">This page is still in the works, come back later uwu</p>
         </h2>
-        <div class="watermark"><img src="assets/razz_logo.png" alt="Watermark"></div>
+
+        <div class="platform-icons" style="text-align: center; margin-top: 20px;">
+            <a href="https://ko-fi.com/Razzbian" target="_blank" rel="noopener noreferrer">  <img src="assets/images/icons/icon_kofi.png" alt="Ko-fi" class="platform-icon" style="width: 40px; height: 40px; margin: 0 5px;"></a>
+            <a href="https://www.patreon.com/Razzbian" target="_blank" rel="noopener noreferrer"><img src="assets/images/icons/icon_patreon.png" alt="Patreon" class="platform-icon" style="width: 40px; height: 40px; margin: 0 5px;"></a>
+            <a href="https://rararazzbian.bsky.social/" target="_blank" rel="noopener noreferrer"><img src="assets/images/icons/icon_bluesky.png" alt="Bluesky" class="platform-icon" style="width: 40px; height: 40px; margin: 0 5px;"></a>
+            <a href="https://www.furaffinity.net/user/Sosere" target="_blank" rel="noopener noreferrer"><img src="assets/images/icons/icon_fa.png" alt="FurAffinity" class="platform-icon" style="width: 40px; height: 40px; margin: 0 5px;"></a>
+            <a href="https://twitter.com/Rararazzbian" target="_blank" rel="noopener noreferrer"><img src="assets/images/icons/icon_twitter.png" alt="Twitter" class="platform-icon" style="width: 40px; height: 40px; margin: 0 5px;"></a>
+        </div>
+
+        <div class="watermark">
+            <img src="assets/images/razz_logo.png" alt="Watermark">
+        </div>
     </div>
 
 
@@ -85,7 +98,7 @@
         }
         });
         const ageModal=document.getElementById('ageModal'),yesButton=document.getElementById('yesButton'),noButton=document.getElementById('noButton'),mainContent=document.getElementById('mainContent');
-        yesButton.addEventListener('click',()=>{mainContent.style.filter='none',ageModal.style.display='none';});
+        yesButton.addEventListener('click',()=>{mainContent.style.filter='none',ageModal.style.display='none',setCookie('adultVerified', 'true', 365);;});
         noButton.addEventListener('click',()=>{window.location.href='https://youtu.be/-kmP-EufWYA';});
     </script>
 </body>
