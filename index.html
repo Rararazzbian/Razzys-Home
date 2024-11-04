@@ -6,6 +6,7 @@
     <link rel="icon" href="assets/favicon.ico">
     <title>Razzy's Home</title>
     <style>
+        
         @font-face {
             font-family: 'AlexandriaBlack';
             src: url('assets/fonts/alexandria-black.ttf') format('truetype');
@@ -63,7 +64,7 @@
             color: #fff; 
             background: #000; 
             width: 100%; 
-            max-width: 700px; 
+            max-width: 700px;
             padding: 20px;
             text-align: center; 
             margin: 40px auto 0 auto; 
@@ -72,7 +73,7 @@
             word-wrap: break-word; /* Handle text overflow */
             overflow-wrap: break-word; /* Handle text overflow */
         }
-        h1 { margin-bottom: 0 }
+
         h1 img, h2 img {
             width: 100%; 
             height: auto; 
@@ -92,16 +93,22 @@
             font-family: 'Outfit'; 
             font-size: 24px; 
             position: absolute; 
-            top: 60px; 
+            top: 100px; 
             color: #fff; 
-            background: #000; 
+            background: #00000000; 
             padding: 10px;
             margin: 0 auto; 
             width: 100%; 
             max-width: 700px; 
+            height: 100%;
             text-align: center;
             word-wrap: break-word; /* Handle text overflow */
             overflow-wrap: break-word; /* Handle text overflow */
+            word-break: break-word;
+        }
+        
+        h2 {
+        height: 30%;
         }
 
         h2 span {
@@ -157,6 +164,7 @@
             width: 200px; 
             height: auto;
         }
+    
     </style>
 </head>
 <body>
@@ -197,6 +205,13 @@
     </div>
 
     <script>
+        window.addEventListener('resize', function() {
+            const h2 = document.querySelector('h2');
+            const windowWidth = window.innerWidth;
+            const baseHeight = window.innerHeight * 0.2; // 30% of viewport height
+            const addedHeight = (1 - windowWidth / window.innerWidth) * window.innerHeight * 0.2; // Example calculation
+            h2.style.height = (baseHeight + addedHeight) + 'px';
+        });
         const bannerBox=document.querySelector('h1'),gif=document.createElement('img');
         gif.src='assets/razz_teehee.gif',gif.classList.add('gif'),bannerBox.appendChild(gif);
         let isPlaying=false;
